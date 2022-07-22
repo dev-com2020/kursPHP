@@ -1,6 +1,6 @@
 <?php
 
-$db_conn = new PDO('mysql:host=localhost;dbname=recipes','admin','');
+$db_conn = new PDO('mysql:host=localhost;dbname=recipes','root','');
 
 // $sql = 'SELECT name,description, chef FROM recipes WHERE id = :recipe_id';
 $sql = 'SELECT name,description FROM recipes WHERE chef = :chef AND category_id = :category_id';

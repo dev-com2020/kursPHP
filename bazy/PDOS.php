@@ -1,6 +1,6 @@
 <?php
 
-$db_conn = new PDO('mysql:host=localhost;dbname=recipes','admin','');
+$db_conn = new PDO('mysql:host=localhost;dbname=recipes','root','');
 
 // wykonanie zapytania
 $stmt = $db_conn->query('SELECT name, chef FROM recipes');
