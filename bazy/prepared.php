@@ -11,3 +11,4 @@ $stmt = $db_conn->prepare($sql);
 $stmt->execute(array("Sylwia",3));
 
 $recipe = $stmt->fetch();
+print_r($recipe);
