@@ -21,6 +21,8 @@ spl_autoload_register(function($classname) {
 
 $myCourier = new Courier();
 $parcel = new Parcel();
+$myCourier2 = new Dpd();
+
 // dodanie adresu, jeśli jest
 $parcel->weight = rand(1,7);
 try {
@@ -34,6 +36,7 @@ echo "Coś poszło nie tak. " . $e->getMessage();
 // zakończenie działania, aby nie był wykonywany dalszy kod
 exit;
 }
+
 
 
 

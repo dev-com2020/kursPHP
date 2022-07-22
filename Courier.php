@@ -43,9 +43,7 @@ class Courier
     public function ship(Parcel $parcel){
         // $this->count++;
         // tutaj miejsce na kod
-        if(empty($parcel->address)){
-            throw new Exception('Nie podano adresu');
-        }
+        
         return true;
     }
 
