@@ -1,6 +1,8 @@
 <?php
 namespace shipping;
-class Dpd extends Courier{
+// require_once 'Trackable.php';
+
+class Dpd extends Courier implements Trackable{
 
 
 
@@ -9,7 +11,11 @@ class Dpd extends Courier{
         //wybór kuriera
         //zabezpieczenie paczki
         //wysyłka
-        echo "<br>".$parcel;
-        return true;
+        $parcelId = 42;        
+        return $parcelId;
+    }
+
+    public function getTrackInfo($parcelId){
+        return(array("status" => "w drodze "));
     }
 }
