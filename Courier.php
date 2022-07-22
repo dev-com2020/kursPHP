@@ -1,13 +1,11 @@
 <?php
 
-namespace shipping;
-
 class Courier
 {
     // protected $name;
     // protected $data = array();
     // public $home_country;
-    protected $count = 0;
+    // protected $count = 0;
 
 
 
@@ -43,14 +41,17 @@ class Courier
     }
 
     public function ship(Parcel $parcel){
-        $this->count++;
+        // $this->count++;
         // tutaj miejsce na kod
+        if(empty($parcel->address)){
+            throw new Exception('Nie podano adresu');
+        }
         return true;
     }
 
-    public function count(){
-        return $this->count;
-    }
+    // public function count(){
+    //     return $this->count;
+    // }
 
     public function calculateShipping(Parcel $parcel){
         $rate = $this-> getShippingRateForCountry($parcel ->destinationCountry);

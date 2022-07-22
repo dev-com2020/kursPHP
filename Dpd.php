@@ -1,6 +1,4 @@
 <?php
-namespace shipping;
-// require_once 'Trackable.php';
 
 class Dpd extends Courier implements Trackable{
 

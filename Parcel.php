@@ -1,9 +1,8 @@
 <?php
-namespace shipping;
 
 class Parcel {
-    protected $weight;
-    protected $destinationCountry;
+    public $weight;
+    public $destinationCountry;
 
     public function setWeight($weight){
         echo 'waga ustawiona na: ' . $weight . "<br>";
@@ -16,8 +15,7 @@ class Parcel {
         $this->destinationCountry = $country;
         return $this;
     }
-
-    // $myparcel = new Parcel();
-    // $myparcel -> setWeight(5)->setCountry('USA');
-    
 }
+    $myparcel = new Parcel();
+    $myparcel -> setWeight(5)->setCountry('USA');
+    

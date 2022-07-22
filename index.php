@@ -1,17 +1,44 @@
 <?php
-// require 'courier.php';
 
 spl_autoload_register(function($classname) {
     include strtolower($classname) . '.php';
 });
 
-$kurier5 = new \shipping\Dpd();
+// $kurier5 = new \shipping\Dpd();
 
-if($kurier5 instanceof Courier){
-    echo 'jestem od kuriera';
+// if($kurier5 instanceof \shipping\Courier){
+//     echo 'jestem od kuriera';
+// }
+// if($kurier5 instanceof \shipping\Dpd){
+//     echo 'jestem od kuriera Dpd';
+// }
+// if($kurier5 instanceof \shipping\Parcel){
+//     echo 'jestem od kuriera Dpd-Parcel';
+// }
+// if($kurier5 instanceof \shipping\Trackable){
+//     echo 'jestem od kuriera Dpd-Trackable';
+// }
+
+$myCourier = new Courier();
+$parcel = new Parcel();
+// dodanie adresu, jeśli jest
+$parcel->weight = rand(1,7);
+try {
+$myCourier->ship($parcel);
+echo "Paczka wysłana ";
+} catch (HeavyParcelException $e) {
+echo "Błąd wagi paczki: " . $e->getMessage();
+// skierowanie do wyboru innego kuriera
+} catch (Exception $e) {
+echo "Coś poszło nie tak. " . $e->getMessage();
+// zakończenie działania, aby nie był wykonywany dalszy kod
+exit;
 }
 
-print_r(get_declared_interfaces());
+
+
+
+// print_r(get_declared_interfaces());
 
 // $kurier1 = new \shipping\Courier("Gołąb pocztowy<br>");
 // echo "Nazwa kuriera: ". $kurier1->name;
