@@ -2,17 +2,42 @@
 
 class Courier
 {
-    // protected $name;
+    public $name;
     // protected $data = array();
-    // public $home_country;
+    public $home_country;
     // protected $count = 0;
 
 
 
-    // public function __construct($name){
-    //     $this->name = $name;
-    //     return true;
-    // }
+    public function __construct($name, $home_country){
+        $this->name = $name;
+        $this->home_country = $home_country;
+        $this->logfile = $this->getLogFile();
+        return true;
+    }
+
+    protected function getLogFile(){
+        return fopen('/tmp/error_log.txt','a');
+    }
+
+    public function log($message){
+        if($this->logfile){
+            fputs($this->logfile, 'Komunikat w dzienniku: '.$message);
+        }
+    }
+
+    public function __sleep(){
+        return array("name", "home_country");
+    }
+
+    public function __wakeup(){
+        $this->logfile = $this->getLogFile();
+        return true;
+    }
+
+    public function __toString(){
+        return $this->name .'('. $this->home_country . ')';
+    }
 
     // public function __get($property){
     //     return $this->data[$property];
@@ -43,7 +68,6 @@ class Courier
     public function ship(Parcel $parcel){
         // $this->count++;
         // tutaj miejsce na kod
-        
         return true;
     }
 
@@ -60,5 +84,14 @@ class Courier
     private function getShippingRateForCountry($country){
         //algorytm do obliczania
         return 1.2;
+    }
+
+    public function __call($name,$params){
+        if($name == 'sendParcel'){
+            // przekazujemy wywołanie do metody ...
+            return $this->send($params[0]);
+        } else {
+            error_log('Failed call to ' .$name. ' in Courier class');
+        }
     }
 }

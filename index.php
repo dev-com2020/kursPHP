@@ -19,23 +19,27 @@ spl_autoload_register(function($classname) {
 //     echo 'jestem od kuriera Dpd-Trackable';
 // }
 
-$myCourier = new Courier();
-$parcel = new Parcel();
-$myCourier2 = new Dpd();
+$myCourier = new Courier('Dpd','PL');
+// echo $myCourier;
+var_dump($myCourier);
+echo serialize($myCourier);
+
+// $parcel = new Parcel();
+// $myCourier2 = new Dpd();
 
 // dodanie adresu, jeśli jest
-$parcel->weight = rand(1,7);
-try {
-$myCourier->ship($parcel);
-echo "Paczka wysłana ";
-} catch (HeavyParcelException $e) {
-echo "Błąd wagi paczki: " . $e->getMessage();
-// skierowanie do wyboru innego kuriera
-} catch (Exception $e) {
-echo "Coś poszło nie tak. " . $e->getMessage();
-// zakończenie działania, aby nie był wykonywany dalszy kod
-exit;
-}
+// $parcel->weight = rand(1,7);
+// try {
+// $myCourier->ship($parcel);
+// echo "Paczka wysłana ";
+// } catch (HeavyParcelException $e) {
+// echo "Błąd wagi paczki: " . $e->getMessage();
+// // skierowanie do wyboru innego kuriera
+// } catch (Exception $e) {
+// echo "Coś poszło nie tak. " . $e->getMessage();
+// // zakończenie działania, aby nie był wykonywany dalszy kod
+// exit;
+// }
 
 
 
